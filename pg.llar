@@ -1,0 +1,26 @@
+(fetch paulgraham (src/selector-feed "http://www.paulgraham.com/articles.html"
+                                     {:urls (S/descendant
+                                             (S/tag :td)
+                                             (S/tag :font)
+                                             (S/tag :a))
+                                      :ts (S/descendant
+                                           (S/tag :td)
+                                           (S/tag :font))
+                                      :title (S/tag :title)
+                                      :content (S/descendant
+                                                (S/tag :td)
+                                                (S/tag :font))}
+                                     {:content  #(->> % first :content (drop 1))
+                                      :author (constantly ["Paul Graham"])
+                                      :urls (fn [l] (take 10 (map (fn [x] (->> x :attrs :href $parse-url)) l)))
+                                      :ts #(->> %
+                                                first
+						$hickory-to-html
+                                                $html2text
+                                                (re-find #"(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{4}")
+                                                first
+                                                ((fn [maybe-ts] (if (nil? maybe-ts) "January 0001" maybe-ts)))
+                                                (str "1 ")
+                                                ($parse-ts "d MMMM yyyy"))}
+                                     {})
+       :tags #{:blog})

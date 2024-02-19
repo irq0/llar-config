@@ -1,0 +1,21 @@
+(fetch usenix-login
+       (src/selector-feed "https://www.usenix.org/publications/loginonline"
+                          {:urls (S/and (S/tag :a)
+                                        (S/has-descendant (S/find-in-text #"Read article now")))
+                           :ts (S/class "date-display-single")
+                           :title (S/id "page-title")
+                           :author (S/descendant (S/class "field-pseudo-field--author-list") (S/tag :a))
+                           :content (S/id "block-system-main")}
+                          {:urls (fn [l] (map (fn [x] (->> x :attrs :href $parse-url)) l))
+                           :ts #(->> %
+                                     first
+                                     :content
+                                     first
+                                     ($parse-ts "MMMM d, yyyy"))
+                           :author (fn [l] (map #(->> % :attrs :title) l))
+                           :title (fn [l] (->> l first :content first))
+                           :content (fn [l] (->> l first :content))}
+                          {})
+
+       :tags #{:deep-tech :sci})
+       

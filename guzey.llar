@@ -1,0 +1,20 @@
+(fetch guzey (src/selector-feed
+              "https://guzey.com/archive/"
+              {:urls (S/descendant
+                      (S/class :article)
+                      (S/and
+                       (S/tag :a)
+                       (S/attr :href #(string/starts-with? % "https://guzey.com/"))))
+               :title (S/class :article-title)
+               :ts (S/descendant (S/class :post-date)
+                                 (S/tag :time))
+               :author (constantly ["Alexey Guzey"])
+               :content (S/tag :article)}
+              {:author (constantly ["Alexey Guzey"])
+               :ts (fn [hick]
+                     (let [raw (->> hick first :content first)]
+                       (when (string? raw)
+                         ($parse-ts :iso-date (re-find #"\d{4}-\d{2}-\d{2}" raw)))))}
+              {})
+       :post (assoc $item :hash ($make-item-hash (str $url)))
+       :tags #{:blog})

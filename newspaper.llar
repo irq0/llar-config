@@ -1,0 +1,39 @@
+(fetch taz-online (src/feed "https://taz.de/!s=&ExportStatus=Intern&SuchRahmen=Online;atom/")
+       :post-fns [($extract)
+                  ($exchange [:entry :descriptions] [:entry :contents])]
+       :options #{:mark-read-on-view :main-list-use-description}
+       :tags #{:news})
+
+(fetch tagesspiegel (src/feed "https://www.tagesspiegel.de/contentexport/feed/home")
+       :rm-fn ($category-rm ["Sport"])
+       :post-fns [($extract)]
+       :options #{:mark-read-on-view :main-list-use-description}
+       :tags #{:news})
+
+(fetch nytimes-mostshared (src/feed "https://rss.nytimes.com/services/xml/rss/nyt/MostShared.xml")
+       :post-fns [($extract)]
+       :options #{:mark-read-on-view :main-list-use-description}
+       :tags #{:news})
+
+(fetch nytimes-mostemailed (src/feed "https://rss.nytimes.com/services/xml/rss/nyt/MostEmailed.xml")
+       :post-fns [($extract)]
+       :options #{:mark-read-on-view :main-list-use-description}
+       :tags #{:news})
+
+(fetch nytimes-mostviewed (src/feed "https://rss.nytimes.com/services/xml/rss/nyt/MostViewed.xml")
+       :post-fns [($extract)]
+       :options #{:mark-read-on-view :main-list-use-description}
+       :tags #{:news})
+
+(fetch nytimes-top (src/feed "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml")
+       :rm-fn ($category-rm ["Sport" "Fraternities and Sororities" "Horse Racing" "Contests and Prizes"])
+       :post-fns [($extract)]
+       :options #{:mark-read-on-view :main-list-use-description}
+       :tags #{:news})
+
+(fetch tagesschau (src/feed "https://www.tagesschau.de/xml/rss2")
+       :options #{:mark-read-on-view :main-list-use-description}
+       :rm (or (re-find #"Liveblog: \+\+" $title)
+               (re-find #"/(sport|fussball)/" ($uri-path $url)))
+       :post-fns [($extract)]
+       :tags #{:news})

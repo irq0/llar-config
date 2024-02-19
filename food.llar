@@ -1,0 +1,7 @@
+(fetch seriouseats-foodlab (src/feed "https://feeds.feedburner.com/SeriousEats-thefoodlab")
+       :post-fns [($extract)]
+       :tags #{:food :AAA})
+
+(fetch seriouseats-recipes (src/feed "https://feeds.feedburner.com/seriouseats/recipes")
+       :post-fns [($extract)]
+       :tags #{:food :AAA})

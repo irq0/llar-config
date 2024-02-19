@@ -1,0 +1,31 @@
+(fetch spiegel-online (src/feed "https://www.spiegel.de/schlagzeilen/index.rss")
+       :rm (or (($category-rm ["Sport"]) $item)
+               (empty? $authors)
+               (re-find #"(?smi)Weiterlesen mit.*Ihre Vorteile mit SPIEGEL.*haben bereits ein Digital-Abonnement" $text))
+       :pre (let [h (:hickory ($fetch $url
+                                          :remove-css? true
+                                          :simplify? true
+                                          :user-agent :browser))
+                  main (S/select (S/tag :main) h)
+                  author-tags (S/select (S/and
+                                         (S/tag :meta)
+                                         (S/attr :name #(= % "author"))) h)
+                  author-tag (or (-> author-tags first :attrs :content) "")
+
+                  authors (->> (string/split author-tag #",")
+                               (map string/trim)
+                               (remove #(= % "DER SPIEGEL")))
+
+                  html (-> {:type :element
+                            :attrs nil
+                            :tag :main
+                            :content main}
+			    $hickory-sanitize-blobify
+                            $hickory-to-html)]
+              (-> $item
+                  (assoc-in [:entry :authors] authors)
+                  (assoc-in [:entry :contents]
+                            {"text/html" html
+                             "text/plain" ($html2text html)})))
+       :options #{:mark-read-on-view :main-list-use-description}
+       :tags #{:news})

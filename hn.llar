@@ -1,0 +1,18 @@
+(fetch hn-frontpage (src/hn :front_page {:min-score 300})
+       :tags #{:hackernews}
+       :options #{:mark-read-on-view}
+       :post-fns [($extract :keep-orig? true)])
+
+(fetch hn-frontpage-keywords (src/hn :front_page {:min-score 20})
+       :tags #{:hackernews}
+       :post-fns [($extract :keep-orig? true)]
+       :rm (not (re-find #"(?i)clojure|layoff|lisp|book|alan kay|futurism|rob pike|germany|file system|quobyte|storage" $title)))
+
+(fetch hn-ask (src/hn :ask_hn {:min-comments 42 :created-after (time/minus (time/zoned-date-time) (time/weeks 1))})
+       :options #{:mark-read-on-view}
+       :tags #{:hackernews})
+
+(fetch hn-show (src/hn :show_hn {:min-comments 23 :created-after (time/minus (time/zoned-date-time) (time/weeks 1))})
+       :options #{:mark-read-on-view}
+       :tags #{:hackernews})
+

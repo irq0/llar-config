@@ -1,0 +1,16 @@
+(fetch golem (src/feed (str "https://rss.golem.de/rss_sub_media.php?token=" ($credentials :golem-token)))
+       :options #{:mark-read-on-view}
+       :pre (let [raw-html (get-in $entry [:descriptions "text/plain"])
+                  html (some-> raw-html
+                               $html-to-hickory
+			       $hickory-sanitize-blobify
+			       $hickory-to-html)]
+              (-> $item
+                  (assoc-in [:entry :descriptions]
+                            {"text/plain" ""})
+                  (assoc-in [:entry :contents]
+                            {"text/html" html
+                             "text/plain" ($html2text html)})))
+       :tags #{:tech})
+
+
