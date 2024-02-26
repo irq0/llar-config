@@ -93,6 +93,9 @@
 (fetch waitbutwhy (src/wp-json "https://waitbutwhy.com/wp-json/" :user-agent :bot)
        :tags #{:blog})
 
+(fetch mspro (src/wp-json "https://mspr0.de/wp-json/")
+       :tags #{:blog})
+
 ;; berlin
 
 (fetch cbase (src/feed "https://logbuch.c-base.org/feed")
