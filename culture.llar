@@ -1,6 +1,5 @@
 (fetch n99pi (src/feed "https://feeds.feedburner.com/99pi")
-       :tags #{:culture :fun}
-       :post-fns [($add-tag :highlight)])
+       :tags #{:culture :fun})
 
 (fetch iconicphotos (src/wp-json "https://iconic-photos.com/wp-json/")
        :tags #{:culture :fun})
