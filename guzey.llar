@@ -8,9 +8,8 @@
                :title (S/class :article-title)
                :ts (S/descendant (S/class :post-date)
                                  (S/tag :time))
-               :author (constantly ["Alexey Guzey"])
                :content (S/tag :article)}
-              {:author (constantly ["Alexey Guzey"])
+              {:author ["Alexey Guzey"]
                :ts (fn [hick]
                      (let [raw (->> hick first :content first)]
                        (when (string? raw)

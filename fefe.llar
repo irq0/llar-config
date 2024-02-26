@@ -6,7 +6,7 @@
                            :title (S/tag :li)
                            :content (S/tag :li)}
                           {:content  #(->> % first :content (drop 1))
-                           :author (constantly ["fefe"])
+                           :author ["Felix von Leitner"]
                            :urls (fn [l] (map (fn [x] (->> x :attrs :href $parse-url)) l))
                            :title (fn [l]
                                     ($ellipsify
@@ -27,3 +27,4 @@
                                      ($parse-ts "EEE MMM d yyyy"))}
                           {})
        :tags #{:blog})
+

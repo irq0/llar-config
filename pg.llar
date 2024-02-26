@@ -11,7 +11,7 @@
                                                 (S/tag :td)
                                                 (S/tag :font))}
                                      {:content  #(->> % first :content (drop 1))
-                                      :author (constantly ["Paul Graham"])
+                                      :author ["Paul Graham"]
                                       :urls (fn [l] (take 10 (map (fn [x] (->> x :attrs :href $parse-url)) l)))
                                       :ts #(->> %
                                                 first
