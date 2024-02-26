@@ -1,4 +1,4 @@
-(fetch hn-frontpage (src/hn :front_page {:min-score 300})
+(fetch hn-frontpage (src/hn :front_page {:min-score 200})
        :tags #{:hackernews}
        :options #{:mark-read-on-view}
        :post-fns [($extract :keep-orig? true)])

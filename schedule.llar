@@ -1,5 +1,5 @@
-(sched-fetch morning-news
-  :early-morning
+(sched-fetch news
+  :during-daytime
   (some #{:news} $TAGS))
   
 (sched-fetch twitter
@@ -7,38 +7,22 @@
   (src/twitter? $SRC))
 
 (sched-fetch reddit
-  :during-daytime
+  :hourly
   (src/reddit? $SRC))
 
-(sched-fetch tech-blogs-sci
-  :during-daytime
-  (and (src/feed? $SRC) (some #{:tech :sci :deep-tech :blog} $TAGS)))
-
-(sched-fetch shopping-sites
+(sched-fetch youtube
   :hourly
-  (some #{:shopping} $TAGS))
+  (some #{:youtube-channel} $TAGS))
+
+(sched-fetch fav-tags
+  :during-daytime
+  (and (src/feed? $SRC) (some #{:berlin :tech-news :cs :tech :corpo :blog :sci} $TAGS)))
 
 (sched-fetch mailboxes
   :early-morning
   (src/mailbox? $SRC))
 
-(sched-fetch magazines
+(sched-fetch all-feeds
   :early-morning
-  (some #{:magazine :youtube-channel :comics :movies :gaming} $TAGS))
-
-(sched-fetch picture-of-the-day
-  :early-morning
-  (some #{:pics} $TAGS))
-
-(sched-fetch all-feeds-weekly
-  :sundays
   (src/feed? $SRC))
-
-(sched-fetch local-news
-  :during-daytime
-  (and (src/feed? $SRC) (some #{:berlin} $TAGS)))
-
-(sched-fetch alerts
-  :hourly
-  (some #{:google-alert} $TAGS))
 

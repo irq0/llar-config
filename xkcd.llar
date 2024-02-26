@@ -1,5 +1,4 @@
 (fetch xkcd (src/feed "https://xkcd.com/rss.xml")
-       :tags #{:AAA :comics}
        :post (let [hick (some-> $html
                                 $html-to-hickory)
                    alt-text (-> (S/select
@@ -11,4 +10,4 @@
                              (str
                               (get-in $item [:entry :descriptions "text/html"])
                               "<p>" alt-text "</p>"))))
-       :tags #{:comics})
+       :tags #{:fun :comics})

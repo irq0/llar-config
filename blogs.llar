@@ -1,99 +1,64 @@
-(fetch xahteiwi (src/feed "https://xahteiwi.eu/feeds/all.atom.xml")
-       :tags #{:blog})
-
-(fetch danluu (src/feed "https://danluu.com/atom.xml")
-       :tags #{:blog})
-
-(fetch benkuhn (src/feed "https://www.benkuhn.net/index.xml")
-       :tags #{:blog})
-
-(fetch ridiculousfish (src/feed "http://ridiculousfish.com/blog/atom.xml")
-       :tags #{:tech :blog})
-
-(fetch rachelbythebay (src/feed "https://rachelbythebay.com/w/atom.xml")
-       :tags #{:tech :blog})
-
-(fetch codinghorror (src/feed "http://feeds.feedburner.com/codinghorror")
-       :tags #{:tech :blog})
-
-(fetch joel-on-software (src/feed "https://www.joelonsoftware.com/feed/")
-       :tags #{:tech :blog})
-
-(fetch summit-route (src/feed "http://summitroute.com/blog/feed.xml")
-       :tags #{:tech :blog}
-       :post-fns [($exchange [:entry :descriptions] [:entry :contents])])
-
-(fetch joe-duffy (src/feed "http://joeduffyblog.com/feed.xml" :deep? true)
-       :tags #{:tech :blog})
-
-(fetch aphyr (src/feed "https://aphyr.com/posts.atom")
-       :tags #{:tech :blog})
-
-(fetch n99pi (src/feed "https://feeds.feedburner.com/99pi")
-       :tags #{:design}
-       :post-fns [($add-tag :highlight)])
-
-(fetch stackoverflow-engineering (src/feed "https://stackoverflow.blog/feed")
+(fetch isotopp (src/feed "https://blog.koehntopp.info/feed.xml")
        :tags #{:tech})
 
-(fetch soundcloud-backstage (src/feed "https://developers.soundcloud.com/blog.rss")
-       :post-fns [($exchange [:entry :descriptions] [:entry :contents])]
+(fetch pavelmayer (src/feed "https://pavelmayer.de/feed/")
+       :tags #{:tech})
+
+(fetch xahteiwi (src/feed "https://xahteiwi.eu/feeds/all.atom.xml")
+       :tags #{:tech})
+
+(fetch danluu (src/feed "https://danluu.com/atom.xml")
+       :tags #{:tech})
+
+(fetch benkuhn (src/feed "https://www.benkuhn.net/index.xml")
+       :tags #{:tech})
+
+(fetch rachelbythebay (src/feed "https://rachelbythebay.com/w/atom.xml")
+       :tags #{:tech})
+
+(fetch codinghorror (src/feed "http://feeds.feedburner.com/codinghorror")
+       :tags #{:tech})
+
+(fetch joel-on-software (src/feed "https://www.joelonsoftware.com/feed/")
+       :tags #{:tech})
+
+(fetch joe-duffy (src/feed "http://joeduffyblog.com/feed.xml")
+       :tags #{:tech})
+
+(fetch aphyr (src/feed "https://aphyr.com/posts.atom")
        :tags #{:tech})
 
 (fetch pocoo-lucumr (src/feed "http://lucumr.pocoo.org/feed.atom")
        :tags #{:tech})
 
 (fetch programmingisterrible (src/feed "http://programmingisterrible.com/rss")
-       :tags #{:tech :blog}
+       :tags #{:tech}
        :post-fns [($exchange [:entry :descriptions] [:entry :contents])])
 
 (fetch preshing (src/feed "http://preshing.com/feed")
-       :tags #{:tech :blog})
+       :tags #{:tech})
 
 (fetch elibendersky (src/feed "http://eli.thegreenplace.net/feeds/all.atom.xml")
-       :tags #{:tech :blog}
+       :tags #{:tech}
        :post-fns [($exchange [:entry :descriptions] [:entry :contents])])
-
-(fetch tumblr-worstofchefkoch (src/feed "https://worstofchefkoch.tumblr.com/rss"
-                                        :user-agent :bot)
-       :tags #{:recreation})
-
-(fetch tumblr-runningahackerspace (src/feed "https://runningahackerspace.tumblr.com/rss"
-                                            :user-agent :bot)
-       :tags #{:recreation}
-       :post-fns [($exchange [:entry :descriptions]
-                    	     [:entry :contents])])
-
-(fetch berlintypography (src/feed "https://berlintypography.wordpress.com/feed/")
-       :tags #{:design})
-
-(fetch iconicphotos (src/feed "https://iconicphotos.wordpress.com/feed/")
-       :tags #{:pics :recreation :design :AAA})
 
 (fetch allthingsdistributed (src/feed "http://www.allthingsdistributed.com/atom.xml" :force-update? false)
-       :tags #{:tech :blog})
+       :tags #{:tech})
 
 (fetch katemats (src/feed "https://katemats.com/blog?format=rss")
-       :tags #{:blog})
+       :tags #{:tech})
 
 (fetch sachachua-emacs (src/feed "http://sachachua.com/blog/category/emacs/feed")
-       :tags #{:emacs :blog})
+       :tags #{:tech :emacs})
 
 (fetch pragmaticemacs (src/feed "http://pragmaticemacs.com/feed/")
-       :tags #{:emacs :blog})
-
-(fetch erdgeist (src/feed "https://erdgeist.org/blog/rss.xml")
-       :tags #{:blog}
-       :post-fns [($exchange [:entry :descriptions] [:entry :contents])])
+       :tags #{:tech :emacs})
 
 (fetch martin-kleppmann (src/feed "https://feeds.feedburner.com/martinkl")
-       :tags #{:blog})
-
-(fetch frankrieger (src/feed "http://frank.geekheim.de/?feed=rss2")
-       :tags #{:blog})
+       :tags #{:tech})
 
 (fetch joschabach (src/feed "http://bach.ai/feed.xml")
-       :tags #{:blog})
+       :tags #{:tech})
 
 (fetch mechanical-sympathy (src/feed "https://mechanical-sympathy.blogspot.com/feeds/posts/default")
        :tags #{:tech})
@@ -104,51 +69,49 @@
 (fetch randomascii (src/feed "https://randomascii.wordpress.com/feed/")
        :tags #{:tech})
 
-(fetch sdn-clinic (src/wp-json "https://blog.sdn.clinic/wp-json/")
-       :tags #{:tech})
-
 (fetch gutmet (src/feed "https://gutmet.org/blog/feed.rss")
-       :tags #{:blog})
-
-(fetch n-gate (src/feed "http://n-gate.com/index.atom")
-       :tags #{:blog})
-
-(fetch isotopp (src/feed "https://blog.koehntopp.info/feed.xml")
        :tags #{:blog})
 
 (fetch realworldtech (src/wp-json "https://www.realworldtech.com/wp-json/")
        :options #{:mark-read-on-view}
        :tags #{:tech})
 
-(fetch pavelmayer (src/feed "https://pavelmayer.de/feed/")
-       :tags #{:blog})
-
 (fetch dmeister (src/feed "https://dmeister.github.io/blog/atom.xml")
        :tags #{:blog})
 
 (fetch coredumped (src/feed "https://coredumped.dev/index.xml" :deep? true)
-       :tags #{:blog})
+       :tags #{:tech})
 
 (fetch malleablesystems (src/feed "https://malleable.systems/blog/index.xml")
        :tags #{:tech :emacs})
 
 (fetch daily-wtf (src/feed "http://syndication.thedailywtf.com/TheDailyWtf")
-       :tags #{:recreation}
+       :tags #{:fun :tech}
        :rm (re-find #"^(Sponsor Post|CodeSOD|Error'd|Representative Line):" $title)
        :post-fns [($exchange [:entry :descriptions] [:entry :contents])])
 
 (fetch waitbutwhy (src/wp-json "https://waitbutwhy.com/wp-json/" :user-agent :bot)
        :tags #{:blog})
 
-(fetch absorptions (src/feed "http://www.windytan.com/feeds/posts/default")
-       :tags #{:blog})
+;; berlin
 
 (fetch cbase (src/feed "https://logbuch.c-base.org/feed")
-       :tags #{:hackerspace :berlin})
+       :tags #{:berlin})
+
+(fetch xhain (src/feed "https://x-hain.de/de/index.xml")
+       :tags #{:berlin})
+
+;; corpo blogs
 
 (fetch quobyte (src/wp-json "https://www.quobyte.com/wp-json/")
-       :tags #{:tech :corporate})
+       :tags #{:corpo :storage})
 
 (fetch netflix-tech (src/feed "https://medium.com/feed/@NetflixTechBlog")
-       :tags #{:tech})
+       :tags #{:corpo})
 
+(fetch stackoverflow-engineering (src/feed "https://stackoverflow.blog/feed")
+       :tags #{:corpo})
+
+(fetch soundcloud-backstage (src/feed "https://developers.soundcloud.com/blog.rss")
+       :post-fns [($exchange [:entry :descriptions] [:entry :contents])]
+       :tags #{:corpo})

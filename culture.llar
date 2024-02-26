@@ -1,0 +1,10 @@
+(fetch n99pi (src/feed "https://feeds.feedburner.com/99pi")
+       :tags #{:culture :fun}
+       :post-fns [($add-tag :highlight)])
+
+(fetch iconicphotos (src/feed "https://iconicphotos.wordpress.com/feed/")
+       :tags #{:culture :fun})
+
+(fetch nasa-image (src/feed "https://www.nasa.gov/feeds/iotd-feed")
+       :tags #{:culture :fun})
+

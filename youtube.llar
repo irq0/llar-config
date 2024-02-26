@@ -1,52 +1,44 @@
-(fetch youtube-rickbeato (src/feed "https://www.youtube.com/feeds/videos.xml?channel_id=UCJquYOG5EL82sKTfH9aMA9Q")
-       :options #{:mark-read-on-view}
-       :tags #{:music :youtube-channel})
-
-(fetch lastweektonight (src/feed "https://www.youtube.com/feeds/videos.xml?channel_id=UC3XTzVzaHQEd30rQbuvCtTQ")
-       :options #{:mark-read-on-view}
-       :tags #{:youtube-channel})
-
 (fetch cppcon (src/feed "https://www.youtube.com/feeds/videos.xml?channel_id=UCMlGfpWw-RUdWX_JbLCukXg")
-       :options #{:mark-read-on-view}
-       :tags #{:youtube-channel :conference})
-
-(fetch clojure-tv (src/feed "https://www.youtube.com/feeds/videos.xml?channel_id=UCaLlzGqiPE2QRj6sSOawJRg")
-       :options #{:mark-read-on-view}
-       :tags #{:youtube-channel :tech :clojure})
-
-(fetch youtube-usenix (src/feed "https://www.youtube.com/feeds/videos.xml?channel_id=UC4-GrpQBx6WCGwmwozP744Q")
-       :options #{:mark-read-on-view}
-       :tags #{:youtube-channel :tech :sci})
-
-(fetch mailab (src/feed "https://www.youtube.com/feeds/videos.xml?channel_id=UCyHDQ5C6z1NDmJ4g6SerW8g")
-       :options #{:mark-read-on-view}
-       :tags #{:youtube-channel :sci})
-
-(fetch youtube-acm (src/feed "https://www.youtube.com/feeds/videos.xml?channel_id=UCPyA0XmU6aS4JCwVoIBTmIQ")
-       :options #{:mark-read-on-view}
-       :tags #{:youtube-channel :sci})
-
-(fetch emacsrocks (src/feed "https://www.youtube.com/feeds/videos.xml?channel_id=UCkRmQ_G_NbdbCQMpALg6UPg")
-       :options #{:mark-read-on-view}
-       :tags #{:youtube-channel :tech :emacs})
-
-(fetch theartoftheproblem (src/feed "https://www.youtube.com/feeds/videos.xml?channel_id=UCotwjyJnb-4KW7bmsOoLfkg")
        :options #{:mark-read-on-view}
        :tags #{:youtube-channel :tech})
 
+(fetch clojure-tv (src/feed "https://www.youtube.com/feeds/videos.xml?channel_id=UCaLlzGqiPE2QRj6sSOawJRg")
+       :options #{:mark-read-on-view}
+       :tags #{:youtube-channel :clojure})
+
+(fetch youtube-usenix (src/feed "https://www.youtube.com/feeds/videos.xml?channel_id=UC4-GrpQBx6WCGwmwozP744Q")
+       :options #{:mark-read-on-view}
+       :tags #{:youtube-channel :cs})
+
+(fetch mailab (src/feed "https://www.youtube.com/feeds/videos.xml?channel_id=UCyHDQ5C6z1NDmJ4g6SerW8g")
+       :options #{:mark-read-on-view}
+       :tags #{:youtube-channel})
+
+(fetch youtube-acm (src/feed "https://www.youtube.com/feeds/videos.xml?channel_id=UCPyA0XmU6aS4JCwVoIBTmIQ")
+       :options #{:mark-read-on-view}
+       :tags #{:youtube-channel :cs})
+
+(fetch emacsrocks (src/feed "https://www.youtube.com/feeds/videos.xml?channel_id=UCkRmQ_G_NbdbCQMpALg6UPg")
+       :options #{:mark-read-on-view}
+       :tags #{:youtube-channel :emacs})
+
+(fetch theartoftheproblem (src/feed "https://www.youtube.com/feeds/videos.xml?channel_id=UCotwjyJnb-4KW7bmsOoLfkg")
+       :options #{:mark-read-on-view}
+       :tags #{:youtube-channel :cs})
+
 (fetch kurzgesagt (src/feed "https://www.youtube.com/feeds/videos.xml?channel_id=UCsXVk37bltHxD1rDPwtNM8Q")
        :options #{:mark-read-on-view}
-       :tags #{:youtube-channel :sci})
+       :tags #{:youtube-channel})
 
 (fetch crashcourse (src/feed "https://www.youtube.com/feeds/videos.xml?channel_id=UCX6b17PVsYBQ0ip5gyeme-Q")
        :options #{:mark-read-on-view}
-       :tags #{:youtube-channel :sci})
+       :tags #{:youtube-channel})
 
 (fetch computer-history-museum (src/feed "https://www.youtube.com/feeds/videos.xml?channel_id=UCHDr4RtxwA1KqKGwxgdK4Vg")
        :options #{:mark-read-on-view}
-       :tags #{:youtube-channel :sci})
+       :tags #{:youtube-channel :cs})
 
 (fetch two-minute-papers (src/feed "https://www.youtube.com/feeds/videos.xml?channel_id=UCbfYPyITQ-7l4upoX8nvctg")
        :options #{:mark-read-on-view}
-       :tags #{:youtube-channel :sci})
+       :tags #{:youtube-channel :cs})
 

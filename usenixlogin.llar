@@ -16,6 +16,5 @@
                            :title (fn [l] (->> l first :content first))
                            :content (fn [l] (->> l first :content))}
                           {})
+       :tags #{:cs})
 
-       :tags #{:deep-tech :sci})
-       

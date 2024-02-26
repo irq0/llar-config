@@ -1,7 +1,8 @@
 (fetch spiegel-online (src/feed "https://www.spiegel.de/schlagzeilen/index.rss")
-       :rm (or (($category-rm ["Sport"]) $item)
+       :rm (or (($category-rm ["Sport" "Meinung"]) $item)
                (empty? $authors)
-               (re-find #"(?smi)Weiterlesen mit.*Ihre Vorteile mit SPIEGEL.*haben bereits ein Digital-Abonnement" $text))
+               (re-find #"(?smi)Weiterlesen mit.*Ihre Vorteile mit SPIEGEL.*haben bereits ein Digital-Abonnement" $text)
+	       (re-find #"Sie können den Artikel leider nicht mehr aufrufen" $text))
        :pre (let [h (:hickory ($fetch $url
                                           :remove-css? true
                                           :simplify? true

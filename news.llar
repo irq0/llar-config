@@ -2,57 +2,48 @@
        :options #{:mark-read-on-view}
        :rm (string/includes? $title "Four short links")
        :post-fns [($extract :keep-orig? true)]
-       :tags #{:tech :magazine})
+       :tags #{:cs})
 
 (fetch oreilly-fourshortlinks (src/feed "https://www.oreilly.com/radar/topics/four-short-links/feed/index.xml")
        :post-fns  [($add-tag :highlight) ($extract :keep-orig? false)]
-       :tags #{:tech})
+       :tags #{:cs :digest})
 
 (fetch weekly-programming-digest (src/feed "http://feeds.feedburner.com/digest-programming")
-       :tags #{:tech :digest}
-       :post-fns [($add-tag :highlight)
-                  ($exchange [:entry :descriptions] [:entry :contents])])
+       :tags #{:cs :digest}
+       :post-fns [($add-tag :highlight)])
 
 (fetch acm-queue (src/feed "https://queue.acm.org/rss/feeds/queuecontent.xml"
                            :user-agent :browser
                            :force-update? true)
        :post-fns [($extract :keep-orig? true)]
-       :tags #{:tech :magazine :sci})
+       :tags #{:cs})
+
 
 (fetch atlantic-best-of (src/feed "https://www.theatlantic.com/feed/best-of/")
        :options #{:main-list-use-description}
-       :tags #{:magazine})
+       :tags #{:journalism})
 
 (fetch netzpolitik (src/wp-json "https://netzpolitik.org/wp-json/")
        :options #{:mark-read-on-view}
-       :tags #{:politics :magazine})
-
-(fetch volksverpetzer (src/wp-json "https://www.volksverpetzer.de/wp-json/")
-       :options #{:mark-read-on-view}
-       :tags #{:politics})
+       :tags #{:journalism})
 
 (fetch correctiv (src/wp-json "https://correctiv.org/wp-json/")
        :options #{:mark-read-on-view}
-       :tags #{:politics})
-
-(fetch wired (src/feed "https://www.wired.com/feed")
-       :options #{:mark-read-on-view}
-       :post-fns [($extract)]
-       :tags #{:magazine})
+       :tags #{:journalism})
 
 (fetch theregister-storage (src/feed "https://www.theregister.co.uk/data_centre/storage/headlines.atom")
        :post (-> $item
                  (assoc-in [:entry :url] (string/replace $url #"go\.theregister\.com/feed/" ""))
                  ($extract))
        :options #{:mark-read-on-view}
-       :tags #{:storage :magazine})
+       :tags #{:storage :tech-news})
 
 (fetch blocksandfiles (src/wp-json "https://blocksandfiles.com/wp-json/")
        :options #{:mark-read-on-view}
-       :tags #{:storage :magazine})
+       :tags #{:storage :tech-news})
 
 (fetch snia-storage (src/feed "http://sniablog.org/feed/atom/")
-       :tags #{:storage :tech}
+       :tags #{:storage :tech-news}
        :post-fns [($extract :keep-orig? true)])
 
 (fetch infoq-articles (src/feed "https://www.infoq.com/feed/articles" :force-update? false)
@@ -60,8 +51,7 @@
                 (-> $item
                     (assoc-in [:summary :title] title-without)
                     ($extract :keep-orig? true)))
-       :tags #{:tech})
+       :tags #{:tech-news})
        
 (fetch muspy (src/feed (str "https://muspy.com/feed?id=" ($credentials :muspy-id)))
        :tags #{:music})
-

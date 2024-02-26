@@ -1,0 +1,5 @@
+(fetch cxberlin (src/wp-json "https://cxberlin.net/wp-json/")
+       :tags #{:bike :berlin})
+
+(fetch granfondo (src/wp-json "https://granfondo-cycling.com/wp-json/")
+       :tags #{:bike})

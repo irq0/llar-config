@@ -11,6 +11,4 @@
                   (assoc-in [:entry :contents]
                             {"text/html" html
                              "text/plain" ($html2text html)})))
-       :tags #{:tech})
-
-
+       :tags #{:tech-news})
