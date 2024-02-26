@@ -1,19 +1,2 @@
-(fetch twit-c3pb (src/twitter-search "c3pb" ($credentials :twitter-api))
-       :rm (->> $item
-                :entry
-                :type
-                #{:retweet})
-       :tags #{:paderborn})
-
-(fetch twit-berlin-pics (src/twitter-search "#berlin filter:images" ($credentials :twitter-api))
-       :options #{:mark-read-on-view}
-       :rm (or (#{:retreet} (:type $entry))
-               (= (count (get-in $entry [:entities :photos])) 0)
-               (re-find #"pussy|porn|camsex|webcam" $text))
-       :post (assoc-in $item [:entry :contents "text/html"]
-                       (format "<img src=\"%s\"/>"
-                               (first (get-in $entry [:entities :photos]))))
-       :tags #{:pics})
-
 (fetch twitter-timeline (src/twitter-timeline ($credentials :twitter-api)))
 
