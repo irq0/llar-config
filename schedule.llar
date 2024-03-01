@@ -16,7 +16,7 @@
 
 (sched-fetch fav-tags
   :during-daytime
-  (and (src/feed? $SRC) (some #{:berlin :tech-news :cs :tech :corpo :blog :sci} $TAGS)))
+  (and (src/feed? $SRC) (some #{:hackernews :berlin :tech-news :cs :tech :corpo :blog :sci} $TAGS)))
 
 (sched-fetch mailboxes
   :early-morning
