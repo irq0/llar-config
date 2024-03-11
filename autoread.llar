@@ -1,0 +1,3 @@
+(autoread reddit-4 (time/weeks 4) (src/reddit? $SRC))
+(autoread news-1 (time/weeks 2) (some #{:news} $TAGS))
+
