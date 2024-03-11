@@ -6,6 +6,10 @@
   :hourly
   (src/reddit? $SRC))
 
+(sched-fetch hn
+  :hourly
+  (some #{:hackernews} $TAGS))
+
 (sched-fetch youtube
   :hourly
   (some #{:youtube-channel} $TAGS))
