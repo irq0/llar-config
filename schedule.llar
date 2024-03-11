@@ -2,10 +2,6 @@
   :during-daytime
   (some #{:news} $TAGS))
   
-(sched-fetch twitter
-  :early-morning
-  (src/twitter? $SRC))
-
 (sched-fetch reddit
   :hourly
   (src/reddit? $SRC))

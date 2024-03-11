@@ -1,2 +1,2 @@
-(fetch twitter-timeline (src/twitter-timeline ($credentials :twitter-api)))
+;; (fetch twitter-timeline (src/twitter-timeline ($credentials :twitter-api)))
 
