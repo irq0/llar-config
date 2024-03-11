@@ -1,9 +1,6 @@
 (fetch isotopp (src/feed "https://blog.koehntopp.info/feed.xml")
        :tags #{:tech})
 
-(fetch pavelmayer (src/feed "https://pavelmayer.de/feed/")
-       :tags #{:tech})
-
 (fetch xahteiwi (src/feed "https://xahteiwi.eu/feeds/all.atom.xml")
        :tags #{:tech})
 
